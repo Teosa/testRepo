@@ -8,8 +8,8 @@ public class Logs {
 
     public void loggingPlayerOne() {
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
-            bw.write("Player ONE WIN !!!\n");
+                BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true))) {
+            bw.write("Player ONE('X') WIN !!!\n");
         } catch (
                 IOException ex) {
             System.out.println("File not found");
@@ -18,8 +18,8 @@ public class Logs {
 
     public void loggingPlayerTwo() {
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
-            bw.write("Player TWO WIN !!!\n");
+                BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true))) {
+            bw.write("Player TWO('0') WIN !!!\n");
         } catch (
                 IOException ex) {
             System.out.println("File not found");
@@ -28,7 +28,7 @@ public class Logs {
 
     public void loggingIfDraw() {
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
+                BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true))) {
             bw.write("Its DRAW !!!\n");
         } catch (
                 IOException ex) {

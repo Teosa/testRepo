@@ -1,6 +1,5 @@
 package Ylab.Game_Lesson2.logic;
 
-
 import Ylab.Game_Lesson2.body.Cell;
 import Ylab.Game_Lesson2.body.Maps;
 
@@ -44,9 +43,9 @@ public class Users {
             final Cell cell = usersMove();
             if (gameMap.isEmpty(cell)) {
                 gameMap.setSymbol(cell, 'X');
-                try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true)))
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true)))
                 {
-                bw.write("First player('X') make " + countFirstPlayerMove + " move to " + cell.getCol() + "-" + cell.getCol() + "\n");
+            bw.write("First player('X') make " + countFirstPlayerMove + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
                 }
                 catch(IOException ex){
                     System.out.println("File not found");
@@ -62,9 +61,9 @@ public class Users {
             final Cell cell = usersMove();
             if (gameMap.isEmpty(cell)) {
                 gameMap.setSymbol(cell, '0');
-                try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true)))
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true)))
                 {
-                bw.write("Second player('0') make " + countSecondPlayerMove + " move to " + cell.getCol() + "-" + cell.getCol() + "\n");
+        bw.write("Second player('0') make " + countSecondPlayerMove + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
                 }
                 catch(IOException ex){
                     System.out.println("File not found");
