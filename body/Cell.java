@@ -1,4 +1,4 @@
-package Ylab.Game_Lesson2;
+package Ylab.Game_Lesson2.body;
 
 public final class Cell {
     private final int row;

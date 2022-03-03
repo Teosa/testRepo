@@ -1,5 +1,8 @@
-package Ylab.Game_Lesson2;
+package Ylab.Game_Lesson2.logic;
 
+
+import Ylab.Game_Lesson2.body.Cell;
+import Ylab.Game_Lesson2.body.Maps;
 
 import java.util.Scanner;
 
