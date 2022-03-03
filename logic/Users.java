@@ -4,7 +4,13 @@ package Ylab.Game_Lesson2.logic;
 import Ylab.Game_Lesson2.body.Cell;
 import Ylab.Game_Lesson2.body.Maps;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+
+import static Ylab.Game_Lesson2.body.Game.countFirstPlayerMove;
+import static Ylab.Game_Lesson2.body.Game.countSecondPlayerMove;
 
 public class Users {
 
@@ -33,22 +39,40 @@ public class Users {
     }
 
     public void printUserOneMove(final Maps gameMap) {
+        countFirstPlayerMove++;
         while (true) {
             final Cell cell = usersMove();
             if (gameMap.isEmpty(cell)) {
                 gameMap.setSymbol(cell, 'X');
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true)))
+                {
+                bw.write("First player('X') make " + countFirstPlayerMove + " move to " + cell.getCol() + "-" + cell.getCol() + "\n");
+                }
+                catch(IOException ex){
+                    System.out.println("File not found");
+                }
                 return;
             } else System.out.println("This cell is not EMPTY, try again!");
         }
     }
 
     public void printUserTwoMove(final Maps gameMap) {
+        countSecondPlayerMove++;
         while (true) {
             final Cell cell = usersMove();
             if (gameMap.isEmpty(cell)) {
                 gameMap.setSymbol(cell, '0');
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true)))
+                {
+                bw.write("Second player('0') make " + countSecondPlayerMove + " move to " + cell.getCol() + "-" + cell.getCol() + "\n");
+                }
+                catch(IOException ex){
+                    System.out.println("File not found");
+                }
+
                 return;
             } else System.out.println("This cell is not EMPTY, try again!");
         }
+
     }
 }
