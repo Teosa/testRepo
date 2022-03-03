@@ -1,6 +1,7 @@
 package Ylab.Game_Lesson2.body;
 
 import Ylab.Game_Lesson2.logic.DrawCheck;
+import Ylab.Game_Lesson2.logic.Logs;
 import Ylab.Game_Lesson2.logic.Users;
 import Ylab.Game_Lesson2.logic.WinCheck;
 

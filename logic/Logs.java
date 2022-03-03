@@ -1,4 +1,4 @@
-package Ylab.Game_Lesson2.body;
+package Ylab.Game_Lesson2.logic;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Logs {
 
-    void loggingPlayerOne() {
+    public void loggingPlayerOne() {
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
             bw.write("Player ONE WIN !!!\n");
@@ -16,7 +16,7 @@ public class Logs {
         }
     }
 
-    void loggingPlayerTwo() {
+    public void loggingPlayerTwo() {
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
             bw.write("Player TWO WIN !!!\n");
@@ -26,7 +26,7 @@ public class Logs {
         }
     }
 
-    void loggingIfDraw() {
+    public void loggingIfDraw() {
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt", true))) {
             bw.write("Its DRAW !!!\n");

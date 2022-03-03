@@ -1,7 +1,7 @@
 package Ylab.Game_Lesson2;
 
 import Ylab.Game_Lesson2.body.Game;
-import Ylab.Game_Lesson2.body.Logs;
+import Ylab.Game_Lesson2.logic.Logs;
 import Ylab.Game_Lesson2.body.Maps;
 import Ylab.Game_Lesson2.logic.DrawCheck;
 import Ylab.Game_Lesson2.logic.Users;
