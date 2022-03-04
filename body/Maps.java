@@ -1,5 +1,8 @@
 package Ylab.Game_Lesson2.body;
 
+import static Ylab.Game_Lesson2.body.Game.firstPlayerName;
+import static Ylab.Game_Lesson2.body.Game.secondPlayerName;
+
 public class Maps {
     char[][] gameMap = {
             {'-', '-', '-'},
@@ -14,7 +17,7 @@ public class Maps {
         System.out.println("| 4 | 5 | 6 |");
         System.out.println("-------------");
         System.out.println("| 1 | 2 | 3 |");
-        System.out.println("User ONE make move using symbol 'X' \nUser TWO  make move using symbol '0'");
+        System.out.println(firstPlayerName +" make move using symbol 'X' \n" + secondPlayerName + " make move using symbol '0'");
         System.out.println("Let's ROCK!!!");
 
     }

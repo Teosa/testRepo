@@ -8,8 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static Ylab.Game_Lesson2.body.Game.countFirstPlayerMove;
-import static Ylab.Game_Lesson2.body.Game.countSecondPlayerMove;
+import static Ylab.Game_Lesson2.body.Game.*;
 
 public class Users {
 
@@ -45,7 +44,8 @@ public class Users {
                 gameMap.setSymbol(cell, 'X');
                 try(BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true)))
                 {
-            bw.write("First player('X') make " + countFirstPlayerMove + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
+                    bw.write(firstPlayerName + " ('X') make " + countFirstPlayerMove
+                            + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
                 }
                 catch(IOException ex){
                     System.out.println("File not found");
@@ -63,7 +63,8 @@ public class Users {
                 gameMap.setSymbol(cell, '0');
                 try(BufferedWriter bw = new BufferedWriter(new FileWriter("GameLogs.txt", true)))
                 {
-        bw.write("Second player('0') make " + countSecondPlayerMove + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
+                    bw.write(secondPlayerName + " ('0') make " + countSecondPlayerMove
+                             + " move to " + cell.getRow() + "-" + cell.getCol() + "\n");
                 }
                 catch(IOException ex){
                     System.out.println("File not found");
