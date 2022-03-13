@@ -3,7 +3,6 @@ package Ylab.Game_Lesson2.logic;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,16 +31,7 @@ public class ParsingXml {
 
         document.appendChild(root);
         root.appendChild(player);
-
-        player.setAttribute("id", "1");
-        player.setAttribute("name", firstPlayerName);
-        player.setAttribute("symbol", "X");
-
         root.appendChild(player2);
-        player2.setAttribute("id", "2");
-        player2.setAttribute("name", secondPlayerName);
-        player2.setAttribute("symbol", "O");
-
         root.appendChild(game);
 
         for (Move value : gamePlay.moves) {
@@ -54,13 +44,13 @@ public class ParsingXml {
         }
             if(isWin1) {
                 gameResult.setAttribute("playerId", "1");
-                gameResult.setAttribute("name", firstPlayerName);
+                gameResult.setAttribute("WINNER", firstPlayerName);
                 gameResult.setAttribute("symbol", "X");
                 root.appendChild(gameResult);
             }
             if (isWin2) {
                 gameResult.setAttribute("playerId", "2");
-                gameResult.setAttribute("name", secondPlayerName);
+                gameResult.setAttribute("WINNER", secondPlayerName);
                 gameResult.setAttribute("symbol", "O");
                 root.appendChild(gameResult);
             }
