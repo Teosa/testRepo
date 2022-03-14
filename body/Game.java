@@ -1,7 +1,8 @@
 package Ylab.Game_Lesson2.body;
 
-import Ylab.Game_Lesson2.Launcher;
+import Ylab.Game_Lesson2.LauncherNew;
 import Ylab.Game_Lesson2.logic.*;
+import Ylab.Game_Lesson2.logic.XmlReader.Move;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
@@ -9,8 +10,8 @@ import static Ylab.Game_Lesson2.logic.Users.userOneMoveInt;
 import static Ylab.Game_Lesson2.logic.Users.userTwoMoveInt;
 
 public class Game {
-    public static  boolean isWin1 = false;
-    public static  boolean isWin2 = false;
+    public static boolean isWin1 = false;
+    public static boolean isWin2 = false;
     public static boolean isDraw = false;
     public static int countFirstPlayerMove = 0;
     public static int countSecondPlayerMove = 0;
@@ -22,7 +23,7 @@ public class Game {
     private final WinCheck winCheck;
     private final DrawCheck drawCheck;
     private final CheckGamersNames checkGamersNames;
-private final ParsingXml parsingXml;
+    private final ParsingXml parsingXml;
 
     public Game(final Maps maps, final Users users,
                 final WinCheck winCheck, final DrawCheck drawCheck,
@@ -33,18 +34,23 @@ private final ParsingXml parsingXml;
         this.drawCheck = drawCheck;
         this.logs = logs;
         this.checkGamersNames = checkGamersNames;
-        this.parsingXml  = parsingXml;
+        this.parsingXml = parsingXml;
     }
 
-    public void play() throws FileNotFoundException, ParserConfigurationException, TransformerException {
-        checkGamersNames.checkNames();
+    public void play(boolean isFromFile) throws FileNotFoundException, ParserConfigurationException, TransformerException {
+        if(!isFromFile) {
+            checkGamersNames.checkNames();
+        } else  {
+            firstPlayerName = LauncherNew.root.getPlayers().get(0).getName();
+            secondPlayerName = LauncherNew.root.getPlayers().get(1).getName();
+        }
         maps.printMapOnce();
         int num = 1;
         int num2 = 1;
         while (true) {
             System.out.println(firstPlayerName + " 'X' :");
-            users.printUserOneMove(maps);
-            Launcher.gamePlay.moves.add(new Move(1, userOneMoveInt, num++));
+            users.printUserOneMove(maps, true);
+            LauncherNew.gamePlay.moves.add(new Move(1, userOneMoveInt, num++));
             maps.refreshMap(maps);
             if (winCheck.userOneWin(maps)) {
                 logs.loggingPlayerOne();
@@ -61,14 +67,14 @@ private final ParsingXml parsingXml;
                 break;
             }
             System.out.println(secondPlayerName + " '0' :");
-            users.printUserTwoMove(maps);
-            Launcher.gamePlay.moves.add(new Move(2, userTwoMoveInt, num2++));
+            users.printUserTwoMove(maps, true);
+            LauncherNew.gamePlay.moves.add(new Move(2, userTwoMoveInt, num2++));
             maps.refreshMap(maps);
             if (winCheck.userTwoWin(maps)) {
                 logs.loggingPlayerTwo();
                 System.out.println(secondPlayerName + " '0' WIN!");
                 System.out.println("GAME OVER");
-                isWin2=true;
+                isWin2 = true;
                 break;
             }
             if (drawCheck.check(maps)) {
@@ -79,6 +85,6 @@ private final ParsingXml parsingXml;
                 break;
             }
         }
-parsingXml.parse();
+        parsingXml.parse();
     }
 }

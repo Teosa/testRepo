@@ -1,8 +1,10 @@
 package Ylab.Game_Lesson2.logic;
 
+import Ylab.Game_Lesson2.logic.XmlReader.Move;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -12,7 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import static Ylab.Game_Lesson2.Launcher.gamePlay;
+import static Ylab.Game_Lesson2.LauncherNew.gamePlay;
 import static Ylab.Game_Lesson2.body.Game.*;
 
 
@@ -32,13 +34,23 @@ public class ParsingXml {
         document.appendChild(root);
         root.appendChild(player);
         root.appendChild(player2);
+
+        player.setAttribute("id", "1");
+        player.setAttribute("name", firstPlayerName);
+        player.setAttribute("symbol", "X");
+
+
+        player2.setAttribute("id", "2");
+        player2.setAttribute("name", secondPlayerName);
+        player2.setAttribute("symbol", "O");
+
         root.appendChild(game);
 
         for (Move value : gamePlay.moves) {
             Element step = document.createElement("Step");
             step.setAttribute("num", Integer.toString(value.getNum()));
             step.setAttribute("playerId", Integer.toString(value.getPlayerId()));
-            Text text = document.createTextNode(String.valueOf(value.getCoordinate()));
+            Text text = document.createTextNode(Integer.toString(value.getCoordinate()));
             step.appendChild(text);
             game.appendChild(step);
         }

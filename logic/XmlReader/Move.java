@@ -1,4 +1,4 @@
-package Ylab.Game_Lesson2.logic;
+package Ylab.Game_Lesson2.logic.XmlReader;
 
 public  final class Move {
   final   int playerId;
