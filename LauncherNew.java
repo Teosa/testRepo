@@ -1,30 +1,44 @@
 package Ylab.Game_Lesson2;
 
 import Ylab.Game_Lesson2.body.Game;
-import Ylab.Game_Lesson2.logic.*;
-import Ylab.Game_Lesson2.body.Maps;
+import Ylab.Game_Lesson2.logic.DrawCheck;
+import Ylab.Game_Lesson2.logic.GamePlay;
+import Ylab.Game_Lesson2.logic.Logs;
+import Ylab.Game_Lesson2.logic.ParsingXml;
+import Ylab.Game_Lesson2.logic.Users;
+import Ylab.Game_Lesson2.logic.WinCheck;
 import Ylab.Game_Lesson2.logic.XmlReader.Root;
 
 public class LauncherNew {
-    public static GamePlay gamePlay;
-    public static Root root;
 
-    public static void main(String[] args) throws Exception {
+	public static GamePlay gamePlay;
 
-        gamePlay = new GamePlay();
-        root = new Root();
+	public static void main(String[] args) throws Exception {
 
-        Game game = new Game(new Maps(), new Users(),
-                             new WinCheck(), new DrawCheck(),
-                             new Logs(), new CheckGamersNames(), new ParsingXml());
+		gamePlay = new GamePlay();
 
-        if(args.length==0) {
-            game.play(false);
-        }else {
-            String filename = args [0];
-            root.read(filename);
-            game.play(true);
-        }
+		if (args.length == 0) {
+			new Game(
+					new Users(),
+					new WinCheck(),
+					new DrawCheck(),
+					new Logs(),
+					new ParsingXml(),
+					false
+			).play();
+		} else {
+			String filename = args[0];
+			Root.read(filename);
+			new Game(
+					new Users(),
+					new WinCheck(),
+					new DrawCheck(),
+					new Logs(),
+					new ParsingXml(),
+					true
+			).play();
+		}
 
-    }
+	}
+
 }

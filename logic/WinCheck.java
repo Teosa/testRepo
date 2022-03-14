@@ -5,53 +5,60 @@ import Ylab.Game_Lesson2.body.Maps;
 
 public class WinCheck {
 
-    private boolean winCheckByRows(Maps gameMap, final char symbol) {
-        for (int i = 0; i < 3; i++) {
-            if (gameMap.getSymbol(new Cell(i, 0)) == gameMap.getSymbol(new Cell(i, 1)) &&
-                    gameMap.getSymbol(new Cell(i, 1)) == gameMap.getSymbol(new Cell(i, 2)) &&
-                    gameMap.getSymbol(new Cell(i, 2)) == symbol) {
-                return true;
-            }
-        }
-        return false;
-    }
+	private boolean winCheckByRows(final char symbol) {
+		for (int i = 0; i < 3; i++) {
+			if (Maps.getSymbol(new Cell(i, 0)) == Maps.getSymbol(new Cell(i, 1)) &&
+					Maps.getSymbol(new Cell(i, 1)) == Maps.getSymbol(new Cell(i, 2)) &&
+					Maps.getSymbol(new Cell(i, 2)) == symbol) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    private boolean winCheckByCols(Maps gameMap, final char symbol) {
-        for (int i = 0; i < 3; i++) {
-            if (gameMap.getSymbol(new Cell(0, i)) == gameMap.getSymbol(new Cell(1, i)) &&
-                    gameMap.getSymbol(new Cell(1, i)) == gameMap.getSymbol(new Cell(2, i)) &&
-                    gameMap.getSymbol(new Cell(2, i)) == symbol) {
-                return true;
-            }
-        }
-        return false;
-    }
+	private boolean winCheckByCols(final char symbol) {
+		for (int i = 0; i < 3; i++) {
+			if (Maps.getSymbol(new Cell(0, i)) == Maps.getSymbol(new Cell(1, i)) &&
+					Maps.getSymbol(new Cell(1, i)) == Maps.getSymbol(new Cell(2, i)) &&
+					Maps.getSymbol(new Cell(2, i)) == symbol) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    private boolean winCheckByDiagonalOne(Maps gameMap, final char symbol) {
-        return gameMap.getSymbol(new Cell(0, 0)) == gameMap.getSymbol(new Cell(1, 1)) &&
-                gameMap.getSymbol(new Cell(1, 1)) == gameMap.getSymbol(new Cell(2, 2)) &&
-                gameMap.getSymbol(new Cell(2, 2)) == symbol;
+	private boolean winCheckByDiagonalOne(final char symbol) {
+		return Maps.getSymbol(new Cell(0, 0)) == Maps.getSymbol(new Cell(1, 1)) &&
+				Maps.getSymbol(new Cell(1, 1)) == Maps.getSymbol(new Cell(2, 2)) &&
+				Maps.getSymbol(new Cell(2, 2)) == symbol;
 
-    }
+	}
 
-    private boolean winCheckByDiagonalTwo(Maps gameMap, final char symbol) {
-        return gameMap.getSymbol(new Cell(0, 2)) == gameMap.getSymbol(new Cell(1, 1)) &&
-                gameMap.getSymbol(new Cell(1, 1)) == gameMap.getSymbol(new Cell(2, 0)) &&
-                gameMap.getSymbol(new Cell(2, 0)) == symbol;
-    }
+	private boolean winCheckByDiagonalTwo(final char symbol) {
+		return Maps.getSymbol(new Cell(0, 2)) == Maps.getSymbol(new Cell(1, 1)) &&
+				Maps.getSymbol(new Cell(1, 1)) == Maps.getSymbol(new Cell(2, 0)) &&
+				Maps.getSymbol(new Cell(2, 0)) == symbol;
+	}
 
-    private boolean winCheck(final Maps gameMap, final char symbol) {
-        return winCheckByCols(gameMap, symbol) ||
-                winCheckByRows(gameMap, symbol) ||
-                winCheckByDiagonalOne(gameMap, symbol) ||
-                winCheckByDiagonalTwo(gameMap, symbol);
-    }
+	private boolean winCheck(final char symbol) {
+		return winCheckByCols(symbol) ||
+				winCheckByRows(symbol) ||
+				winCheckByDiagonalOne(symbol) ||
+				winCheckByDiagonalTwo(symbol);
+	}
 
-    public boolean userOneWin(final Maps gameMap) {
-        return winCheck(gameMap, 'X');
-    }
+	// Методам возвращающим boolean равильнее давать имя начинающееся с is. Так как буль - это да или нет,
+	// то имя твоего метода звучит как вопрос когда начинается с is
+	public boolean uisUerWin(String symbol) {
+		return winCheck(symbol.charAt(0));
+	}
 
-    public boolean userTwoWin(final Maps gameMap) {
-        return winCheck(gameMap, '0');
-    }
+	//    public boolean userOneWin(final Maps gameMap) {
+//        return winCheck(gameMap, 'X');
+//    }
+//
+//    public boolean userTwoWin(final Maps gameMap) {
+//        return winCheck(gameMap, '0');
+//    }
+
 }

@@ -1,0 +1,19 @@
+ff ('X') make 1 move to 1-1
+rt ('X') make 1 move to 1-1
+fgh ('0') make 1 move to 0-2
+test1 ('X') make 1 move to 0-0
+Test1 ('X') make 1 move to 0-0
+Test2 ('0') make 1 move to 1-0
+Test1 ('X') make 2 move to 1-1
+Test2 ('0') make 2 move to 0-2
+Test1 ('X') make 3 move to 2-2
+Test1 ('X') WIN !!!
+Test1 ('X') make 1 move to 1-0
+test1111 ('X') make 1 move to 0-0
+test444 ('O') make 1 move to 1-0
+jaja ('X') make 1 move to 0-0
+toto ('O') make 1 move to 1-0
+jaja ('X') make 2 move to 1-1
+toto ('O') make 2 move to 2-0
+jaja ('X') make 3 move to 2-2
+jaja ('X') WIN !!!

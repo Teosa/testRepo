@@ -1,6 +1,7 @@
 package Ylab.Game_Lesson2.logic;
 
 import Ylab.Game_Lesson2.logic.XmlReader.Move;
+import Ylab.Game_Lesson2.logic.XmlReader.Player;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -20,7 +21,7 @@ import static Ylab.Game_Lesson2.body.Game.*;
 
 public class ParsingXml {
 
-    public void parse() throws ParserConfigurationException, FileNotFoundException, TransformerException {
+    public void parse(Player playerOne, Player playerTwo) throws ParserConfigurationException, FileNotFoundException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.newDocument();
@@ -35,14 +36,14 @@ public class ParsingXml {
         root.appendChild(player);
         root.appendChild(player2);
 
-        player.setAttribute("id", "1");
-        player.setAttribute("name", firstPlayerName);
-        player.setAttribute("symbol", "X");
+        player.setAttribute("id", playerOne.getId());
+        player.setAttribute("name", playerOne.getName());
+        player.setAttribute("symbol", playerOne.getSymbol());
 
 
-        player2.setAttribute("id", "2");
-        player2.setAttribute("name", secondPlayerName);
-        player2.setAttribute("symbol", "O");
+        player2.setAttribute("id", playerTwo.getId());
+        player2.setAttribute("name", playerTwo.getName());
+        player2.setAttribute("symbol", playerTwo.getSymbol());
 
         root.appendChild(game);
 
@@ -54,19 +55,19 @@ public class ParsingXml {
             step.appendChild(text);
             game.appendChild(step);
         }
-            if(isWin1) {
-                gameResult.setAttribute("playerId", "1");
-                gameResult.setAttribute("WINNER", firstPlayerName);
-                gameResult.setAttribute("symbol", "X");
+            if(playerOne.isWinner()) {
+                gameResult.setAttribute("playerId", playerOne.getId());
+                gameResult.setAttribute("WINNER", playerOne.getName());
+                gameResult.setAttribute("symbol", playerOne.getSymbol());
                 root.appendChild(gameResult);
             }
-            if (isWin2) {
-                gameResult.setAttribute("playerId", "2");
-                gameResult.setAttribute("WINNER", secondPlayerName);
-                gameResult.setAttribute("symbol", "O");
+            else if (playerTwo.isWinner()) {
+                gameResult.setAttribute("playerId", playerTwo.getId());
+                gameResult.setAttribute("WINNER", playerTwo.getName());
+                gameResult.setAttribute("symbol", playerTwo.getSymbol());
                 root.appendChild(gameResult);
             }
-            if (isDraw) {
+            else {
                 gameResult.setTextContent("Its Draw!");
                 root.appendChild(gameResult);
             }
