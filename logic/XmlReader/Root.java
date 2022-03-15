@@ -20,10 +20,21 @@ public class Root {
 	public static final List<Move> moves = new ArrayList<>();
 
 	public static Move getMoveByIdAndName(Integer playerId, Integer moveCounter ) {
-		return moves.stream().filter(move ->
-			playerId.equals(move.getPlayerId()) && moveCounter.equals(move.num))
-				.findFirst()
-				.orElse(null);
+//		return moves.stream().filter(move ->
+//			playerId.equals(move.getPlayerId()) && moveCounter.equals(move.num))
+//				.findFirst()
+//				.orElse(null);
+
+		Move result = null;
+
+		for (Move move : moves) {
+			if(playerId.equals(move.getPlayerId()) && moveCounter.equals(move.num)) {
+				result = move;
+				break;
+			}
+		}
+
+		return result;
 	}
 
 	public static void read(final String filename) throws ParserConfigurationException, IOException, SAXException {
